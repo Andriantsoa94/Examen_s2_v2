@@ -1,3 +1,6 @@
+<?php
+require "../include/fonction.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-
+<?php include "../include/header.php"; ?>
 </body>
 </html>
