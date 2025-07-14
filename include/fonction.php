@@ -22,6 +22,33 @@ function get_objets_vue($categorie_id = null) {
     $result = mysqli_query(dbconnect(), $sql);
     return $result;
 }
+function get_objet_by_id($id_objet) {
+    $id_objet = intval($id_objet);
+    $sql = "SELECT id_objet, nom_objet, nom_categorie, proprietaire_nom, statut_emprunt FROM vue_objets_emprunts WHERE id_objet = '$id_objet'";
+    $result = mysqli_query(dbconnect(), $sql);
+    return mysqli_fetch_assoc($result);
+}
 
+function get_images_objet($id_objet) {
+    $id_objet = intval($id_objet);
+    $sql = "SELECT nom_image as url FROM image_objet WHERE id_objet = '$id_objet' ORDER BY id_image";
+    $result = mysqli_query(dbconnect(), $sql);
+    $images = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $images[] = $row;
+    }
+    return $images;
+}
+
+function get_historique_emprunts($id_objet) {
+    $id_objet = intval($id_objet);
+    $sql = "SELECT emprunteur_nom, date_emprunt, date_retour FROM vue_objets_emprunts WHERE id_objet = '$id_objet' ORDER BY date_emprunt DESC";
+    $result = mysqli_query(dbconnect(), $sql);
+    $historique = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $historique[] = $row;
+    }
+    return $historique;
+}
 
 ?>
