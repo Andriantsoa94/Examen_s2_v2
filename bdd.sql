@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS objet (
 CREATE TABLE IF NOT EXISTS image_objet (
     id_image INT AUTO_INCREMENT PRIMARY KEY,
     id_objet INT NOT NULL,
-    nom_image VARCHAR(255) NOT NULL,
+    nom_image VARCHAR(255) NOT NULL DEFAULT 'PARDEFAUT.jpg',
     FOREIGN KEY (id_objet) REFERENCES objet(id_objet)
 );
 CREATE TABLE IF NOT EXISTS emprunt (
