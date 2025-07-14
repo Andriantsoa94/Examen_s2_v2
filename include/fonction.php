@@ -27,6 +27,7 @@ function get_objet_by_id($id_objet) {
     $sql = "SELECT id_objet, nom_objet, nom_categorie, proprietaire_nom, statut_emprunt FROM vue_objets_emprunts WHERE id_objet = '$id_objet'";
     $result = mysqli_query(dbconnect(), $sql);
     return mysqli_fetch_assoc($result);
+}
 
 function get_images_objet($id_objet) {
     $id_objet = intval($id_objet);
@@ -48,6 +49,7 @@ function get_historique_emprunts($id_objet) {
         $historique[] = $row;
     }
     return $historique;
+}
 
 function upload_img($id, $name) {
     $sql = "INSERT INTO image_objet (id_objet, nom_image) VALUES ('$id', '$name')";
