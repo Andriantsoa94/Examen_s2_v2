@@ -55,6 +55,7 @@ $categories = get_categories();
                         <th>Statut</th>
                         <th>Emprunte par</th>
                         <th>Date de retour prevue</th>
+                        <th>Add img</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,6 +91,11 @@ $categories = get_categories();
                                     echo '-';
                                 }
                                 ?>
+                            </td>
+                            <td>
+                                <a href="add_image.php?id_objet=<?php echo $objet['id_objet']; ?>" class="btn btn-sm btn-outline-primary" title="Ajouter une image">
+                                    <i class="bi bi-plus">+</i>
+                                </a>
                             </td>
                         </tr>
                     <?php } ?>

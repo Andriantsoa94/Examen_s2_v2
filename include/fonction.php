@@ -23,5 +23,8 @@ function get_objets_vue($categorie_id = null) {
     return $result;
 }
 
+//function upload_img($name) {
+//    $sql = "INSERT INTO "
+//}
 
 ?>

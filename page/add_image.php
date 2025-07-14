@@ -13,7 +13,7 @@ require "../include/fonction.php";
 
 <div class="container mt-4">
     <h1>Ajouter une image</h1>
-    <form action="../include/add_image.php" method="post" enctype="multipart/form-data">
+    <form action="traitement_photo.php" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="image" class="form-label">Choisir une image</label>
             <input type="file" class="form-control" id="image" name="image" accept=".jpg, .jpeg, .png, .gif" required>

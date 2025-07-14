@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="add_image.php">Ajouter image</a>
+                    <a class="nav-link active" aria-current="page" href="accueil.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="deconnexion.php">Deconnexion</a>
