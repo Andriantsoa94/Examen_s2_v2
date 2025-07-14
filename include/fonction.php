@@ -27,9 +27,7 @@ function get_objet_by_id($id_objet) {
     $sql = "SELECT id_objet, nom_objet, nom_categorie, proprietaire_nom, statut_emprunt FROM vue_objets_emprunts WHERE id_objet = '$id_objet'";
     $result = mysqli_query(dbconnect(), $sql);
     return mysqli_fetch_assoc($result);
-}
 
-<<<<<<< HEAD
 function get_images_objet($id_objet) {
     $id_objet = intval($id_objet);
     $sql = "SELECT nom_image as url FROM image_objet WHERE id_objet = '$id_objet' ORDER BY id_image";
@@ -50,12 +48,12 @@ function get_historique_emprunts($id_objet) {
         $historique[] = $row;
     }
     return $historique;
-=======
+
 function upload_img($id, $name) {
     $sql = "INSERT INTO image_objet (id_objet, nom_image) VALUES ('$id', '$name')";
     $requete = mysqli_query(dbconnect(), $sql);
     return $requete;
->>>>>>> c97fa1dc0dd17bd60cb415f9db6724d1048428a3
+
 }
 
 ?>
