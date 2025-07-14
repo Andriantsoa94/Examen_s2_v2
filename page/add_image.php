@@ -10,5 +10,16 @@ require "../include/fonction.php";
 </head>
 <body>
 <?php include "../include/header.php"; ?>
+
+<div class="container mt-4">
+    <h1>Ajouter une image</h1>
+    <form action="../include/add_image.php" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="image" class="form-label">Choisir une image</label>
+            <input type="file" class="form-control" id="image" name="image" accept=".jpg, .jpeg, .png, .gif" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter l'image</button>
+    </form>
+
 </body>
 </html>
