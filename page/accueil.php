@@ -60,7 +60,11 @@ $categories = get_categories();
                 <tbody>
                     <?php while ($objet = mysqli_fetch_assoc($objets)) { ?>
                         <tr>
-                            <td><?php echo $objet['nom_objet']; ?></td>
+                            <td>
+                                <a href="fiche_objet.php?id=<?php echo $objet['id']; ?>">
+                                    <?php echo htmlspecialchars($objet['nom_objet']); ?>
+                                </a>
+                            </td>
                             <td><?php echo $objet['nom_categorie']; ?></td>
                             <td><?php echo $objet['proprietaire_nom']; ?></td>
                             <td>
