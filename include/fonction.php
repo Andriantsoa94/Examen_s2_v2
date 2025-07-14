@@ -22,12 +22,13 @@ function get_objets_vue($categorie_id = null) {
     $result = mysqli_query(dbconnect(), $sql);
     return $result;
 }
-function get_objet_by_id($id_objet) {
+function get_objet_by_id($id_objet)
+{
     $id_objet = intval($id_objet);
     $sql = "SELECT id_objet, nom_objet, nom_categorie, proprietaire_nom, statut_emprunt FROM vue_objets_emprunts WHERE id_objet = '$id_objet'";
     $result = mysqli_query(dbconnect(), $sql);
     return mysqli_fetch_assoc($result);
-
+}
 function get_images_objet($id_objet) {
     $id_objet = intval($id_objet);
     $sql = "SELECT nom_image as url FROM image_objet WHERE id_objet = '$id_objet' ORDER BY id_image";
@@ -39,7 +40,8 @@ function get_images_objet($id_objet) {
     return $images;
 }
 
-function get_historique_emprunts($id_objet) {
+function get_historique_emprunts($id_objet)
+{
     $id_objet = intval($id_objet);
     $sql = "SELECT emprunteur_nom, date_emprunt, date_retour FROM vue_objets_emprunts WHERE id_objet = '$id_objet' ORDER BY date_emprunt DESC";
     $result = mysqli_query(dbconnect(), $sql);
@@ -48,6 +50,7 @@ function get_historique_emprunts($id_objet) {
         $historique[] = $row;
     }
     return $historique;
+}
 
 function upload_img($id, $name) {
     $sql = "INSERT INTO image_objet (id_objet, nom_image) VALUES ('$id', '$name')";
@@ -56,4 +59,25 @@ function upload_img($id, $name) {
 
 }
 
+function get_main_image($id_objet) {
+    $id_objet = intval($id_objet);
+    $sql = "SELECT nom_image FROM image_objet WHERE id_objet = '$id_objet' ORDER BY id_image ASC LIMIT 1";
+    $result = mysqli_query(dbconnect(), $sql);
+    $row = mysqli_fetch_assoc($result);
+    return $row ? $row['nom_image'] : 'default.png';
+}
+
+
+function delete_image($id_image) {
+    $sql = "SELECT nom_image FROM image_objet WHERE id_image = '$id_image'";
+    $result = mysqli_query(dbconnect(), $sql);
+    $row = mysqli_fetch_assoc($result);
+    if ($row) {
+        $file = dirname(__DIR__) . '/assets/image/' . $row['nom_image'];
+        if (file_exists($file)) unlink($file);
+        mysqli_query(dbconnect(), "DELETE FROM image_objet WHERE id_image = '$id_image'");
+        return true;
+    }
+    return false;
+}
 ?>

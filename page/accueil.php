@@ -49,6 +49,7 @@ $categories = get_categories();
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>images</th>
                         <th>Nom</th>
                         <th>Categorie</th>
                         <th>Proprietaire</th>
@@ -61,6 +62,9 @@ $categories = get_categories();
                 <tbody>
                     <?php while ($objet = mysqli_fetch_assoc($objets)) { ?>
                         <tr>
+                            <td>
+                                <img src="../assets/image/<?php echo get_main_image($objet['id_objet']); ?>"style="width:25px;height:auto;">
+                            </td>
                             <td>
                                 <a href="fiche_objet.php?id=<?php echo $objet['id_objet']; ?>">
                                     <?php echo $objet['nom_objet']; ?>
