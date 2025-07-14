@@ -23,8 +23,10 @@ function get_objets_vue($categorie_id = null) {
     return $result;
 }
 
-//function upload_img($name) {
-//    $sql = "INSERT INTO "
-//}
+function upload_img($id, $name) {
+    $sql = "INSERT INTO image_objet (id_objet, nom_image) VALUES ('$id', '$name')";
+    $requete = mysqli_query(dbconnect(), $sql);
+    return $requete;
+}
 
 ?>

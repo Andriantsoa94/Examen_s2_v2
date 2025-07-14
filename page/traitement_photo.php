@@ -2,12 +2,17 @@
 session_start();
 require('../include/fonction.php');
 
-$uploadDir = dirname(__DIR__) . '/asset/image/';
-$maxSize = 2 * 1024 * 1024; // 2 MB
-$allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+$idimg = $_POST['id_img'];
+if (!$idimg) {
+    die('ID image invalide.');
+}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
-    $file = $_FILES['image'];
+$uploadDir = dirname(__DIR__) . '/assets/image/';
+$maxSize = 2 * 1024 * 1024;
+$allowedMimeTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fichier'])) {
+    $file = $_FILES['fichier'];
 
     if ($file['error'] !== UPLOAD_ERR_OK) {
         die('Erreur lors de l’upload : ' . $file['error']);
@@ -29,10 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     $newName = $originalName . '_' . uniqid() . '.' . $extension;
 
     if (move_uploaded_file($file['tmp_name'], $uploadDir . $newName)) {
-        // Call your function to save the image info in the database
-        if (upload_img($newName)) {
+        if (upload_img($idimg, $newName)) {
             echo "Fichier uploadé avec succès : " . $newName;
-            header('Location: change_img.php?img=' . urlencode($newName));
+//            header('Location: change_img.php?idimg=' . $idimg);
             exit;
         } else {
             die('Échec lors de la mise à jour de l’image dans la base de données.');
